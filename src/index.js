@@ -1,6 +1,6 @@
 /* Copyright 2013 - 2022 Waiterio LLC */
 import React, { useState } from 'react'
-import getTranslatables from '@multilocale/multilocale-js-client/getTranslatables.js'
+import getPhrases from '@multilocale/multilocale-js-client/getPhrases.js'
 import getBrowserLanguage from './getBrowserLanguage.js'
 
 let defaultLanguage
@@ -48,22 +48,22 @@ export const useTranslation = forcedLanguage => {
     errorCount < 3
   ) {
     loading = true
-    suspender = getTranslatables({
+    suspender = getPhrases({
       organizationId,
       language,
       project,
+      fields: ['key', 'value', 'language'],
     })
-      .then(translatables => {
+      .then(phrases => {
         if (!dictionaries[language]) {
           dictionaries[language] = {}
         }
 
-        translatables.forEach(translatable => {
-          if (!dictionaries[translatable.language]) {
-            dictionaries[translatable.language] = {}
+        phrases.forEach(phrase => {
+          if (!dictionaries[phrase.language]) {
+            dictionaries[phrase.language] = {}
           }
-          dictionaries[translatable.language][translatable.key] =
-            translatable.value
+          dictionaries[phrase.language][phrase.key] = phrase.value
         })
         suspender = null
         loading = false
@@ -89,7 +89,7 @@ export const useTranslation = forcedLanguage => {
         value = dictionaries[language][key]
       } else if (fallback?.length >= 0) {
         value = fallback
-      } else if (!(key.startsWith('__') && key.endsWith('__'))) {
+      } else if (!(key?.startsWith('__') && key?.endsWith('__'))) {
         value = key
       }
 

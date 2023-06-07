@@ -25,7 +25,8 @@
     "multi-language",
     "multilingual",
     "i18n",
-    "translate"
+    "translate",
+    "react-intl"
   ],
   "author": "Multilocale",
   "license": "MIT",
