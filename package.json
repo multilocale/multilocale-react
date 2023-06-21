@@ -1,7 +1,7 @@
 {
   "name": "@multilocale/multilocale-react",
-  "version": "0.0.7",
-  "description": "translate react with multilocale.com",
+  "version": "0.0.8",
+  "description": "translate React with multilocale.com",
   "type": "module",
   "main": "dist/index.js",
   "files": [
@@ -33,7 +33,7 @@
   "bugs": {
     "url": "https://github.com/multilocale/multilocale-react/issues"
   },
-  "homepage": "https://github.com/multilocale/multilocale-react",
+  "homepage": "https://www.multilocale.com/",
   "dependencies": {
     "@multilocale/multilocale-js-client": "0.0.5",
     "@tanstack/react-query": "4.15.0"
